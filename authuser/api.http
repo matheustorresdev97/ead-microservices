@@ -1,5 +1,5 @@
 @base_url = http://localhost:8087
-@user_id = 57df2722-43b1-41fe-9d6d-b44f85be8094
+@user_id = 247f99bd-7643-4d04-98c5-b3ee1dcdd54f
 
 ### CREATE NEW USER
 POST {{base_url}}/auth/signup
@@ -23,3 +23,30 @@ GET {{base_url}}/users/{{user_id}}
 
 ### DELETE USER
 DELETE {{base_url}}/users/{{user_id}}
+
+### UPDATE USER
+PUT {{base_url}}/users/{{user_id}}
+Content-Type: application/json
+
+{
+  "fullName": "Roberto Matheus Torres",
+  "phoneNumber": "79999999998",
+  "cpf": "22345678979"
+}
+
+### UPDATE PASSWORD
+PUT {{base_url}}/users/{{user_id}}/password
+Content-Type: application/json
+
+{
+  "password": "secret1",
+  "oldPassword": "secret"
+}
+
+### UPDATE IMAGE
+PUT {{base_url}}/users/{{user_id}}/image
+Content-Type: application/json
+
+{
+  "imageUrl": "matheus123.png"
+}

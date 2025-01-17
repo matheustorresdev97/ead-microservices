@@ -18,6 +18,7 @@ import com.ead.authuser.enums.UserType;
 import com.ead.authuser.models.UserModel;
 import com.ead.authuser.records.UserRecord;
 import com.ead.authuser.services.UserService;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -28,13 +29,14 @@ public class AuthenticationControlller {
     UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<Object> resgisterUser(@RequestBody UserRecord userRecord) {
+    public ResponseEntity<Object> resgisterUser(
+            @RequestBody @JsonView(UserRecord.UserView.RegistrationPost.class) UserRecord userRecord) {
 
         if (userService.existsByUsername(userRecord.username())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: username is already taken!");
         }
 
-        if( userService.existsByEmail(userRecord.email() ) ){
+        if (userService.existsByEmail(userRecord.email())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: email is already taken!");
         }
 
