@@ -1,0 +1,25 @@
+@base_url = http://localhost:8087
+@user_id = 57df2722-43b1-41fe-9d6d-b44f85be8094
+
+### CREATE NEW USER
+POST {{base_url}}/auth/signup
+Content-Type: application/json
+
+{
+  "username": "matheustorres",
+  "email": "matheustorres@email.com",
+  "password": "secret",
+  "fullName": "Matheus Torres",
+  "phoneNumber": "79999999999",
+  "cpf": "12345678979",
+  "imageUrl": "matheus.png"
+}
+
+### GET ALL USERS
+GET {{base_url}}/users
+
+### GET USER BY ID
+GET {{base_url}}/users/{{user_id}}
+
+### DELETE USER
+DELETE {{base_url}}/users/{{user_id}}
