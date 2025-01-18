@@ -60,7 +60,7 @@ public class UserController {
 
     @PutMapping("/{userId}")
     public ResponseEntity<Object> updateUser(@PathVariable(value = "userId") UUID userId,
-            @RequestBody @JsonView(UserRecord.UserView.UserPut.class) UserRecord userRecord) {
+            @RequestBody @Validated(UserRecord.UserView.UserPut.class) @JsonView(UserRecord.UserView.UserPut.class) UserRecord userRecord) {
         Optional<UserModel> userModelOptional = userService.findById(userId);
         if (!userModelOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");

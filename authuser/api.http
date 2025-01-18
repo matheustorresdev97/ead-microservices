@@ -1,5 +1,5 @@
 @base_url = http://localhost:8087
-@user_id = 247f99bd-7643-4d04-98c5-b3ee1dcdd54f
+@user_id = 6164c296-9248-431a-8e5f-4a761c27ccc4
 
 ### CREATE NEW USER
 POST {{base_url}}/auth/signup

@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +31,7 @@ public class AuthenticationControlller {
 
     @PostMapping("/signup")
     public ResponseEntity<Object> resgisterUser(
-            @RequestBody @JsonView(UserRecord.UserView.RegistrationPost.class) UserRecord userRecord) {
+            @RequestBody @Validated(UserRecord.UserView.RegistrationPost.class) @JsonView(UserRecord.UserView.RegistrationPost.class) UserRecord userRecord) {
 
         if (userService.existsByUsername(userRecord.username())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: username is already taken!");
