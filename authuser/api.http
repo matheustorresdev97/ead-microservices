@@ -21,6 +21,15 @@ GET {{base_url}}/users
 ### GET ALL USER PAGINATION
 GET {{base_url}}/users?size=&page=1
 
+### GET BY USERTYPE
+GET {{base_url}}/users?userType=STUDENT
+
+### GET BY EMAIL
+GET {{base_url}}/users?email=matheustorres@email.com
+
+### GET BY CPF
+GET {{base_url}}/users?userType=STUDENT&email=matheustorres@email.com
+
 ### GET USER BY ID
 GET {{base_url}}/users/{{user_id}}
 
