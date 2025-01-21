@@ -1,0 +1,68 @@
+@base_url = http://localhost:8082
+@user_id = 6164c296-9248-431a-8e5f-4a761c27ccc4
+
+@course_id =
+
+@module_id =
+
+### CREATE NEW COURSE
+POST {{base_url}}/courses
+Content-Type: application/json
+
+{
+  "name": "Curso 4",
+  "description": "Aprendendo Spring",
+  "userInstructor": "6164c296-9248-431a-8e5f-4a761c27ccc4",
+  "courseStatus": "CONCLUDED",
+  "courseLevel": "BEGINNER"
+}
+
+### EDIT COURSE
+PUT {{base_url}}/courses/{{course_id}}
+Content-Type: application/json
+
+{
+  "name": "Curso 5",
+  "description": "Aprendendo Spring",
+  "userInstructor": "6164c296-9248-431a-8e5f-4a761c27ccc4",
+  "courseStatus": "CONCLUDED",
+  "courseLevel": "BEGINNER"
+}
+
+### GET ALL COURSES
+GET {{base_url}}/courses
+
+### GET ONE COURSE
+GET {{base_url}}/courses/{{course_id}}
+
+### DELETE COURSE
+DELETE {{base_url}}/courses/{{course_id}}
+
+#### MODULE
+
+### CREATE MODULE
+POST {{base_url}}/courses/{{course_id}}/modules
+Content-Type: application/json
+
+{
+  "title": "Iniciando o modulo 2",
+  "description": "Conhecendo os conceitos básicos do Spring"
+}
+
+### GET ALL MODULES
+GET {{base_url}}/courses/{{course_id}}/modules
+
+### GET ONE MODULE
+GET {{base_url}}/courses/{{course_id}}/modules/{{module_id}}
+
+### EDIT MODULE
+PUT {{base_url}}/courses/{{course_id}}/modules/{{module_id}}
+Content-Type: application/json
+
+{
+  "title": "Iniciando o modulo 2",
+  "description": "Conhecendo os conceitos básicos do Spring"
+}
+
+### DELETE MODULE
+DELETE {{base_url}}/courses/{{course_id}}/modules/{{module_id}}
